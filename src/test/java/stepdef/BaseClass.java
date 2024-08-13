@@ -31,6 +31,6 @@ public class BaseClass {
 
 	@After
 	public void tearDown() {
-		WebdriverManager.quitBrowser();
+//		WebdriverManager.quitBrowser();
 	}
 }

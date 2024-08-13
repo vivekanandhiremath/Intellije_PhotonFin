@@ -38,5 +38,10 @@ public class HomePage {
 		getstartedbtn2.click();
 	}
 
+	@FindBy(xpath = "//input[contains(@placeholder,'Enter Amount')]")
+	private WebElement enteramounttextfield;
 
+	public void enterAmount(String amount) {
+		enteramounttextfield.sendKeys(amount);
+	}
 }
