@@ -9,22 +9,21 @@ import utils.PropertyReader;
 
 public class BaseClass {
 
-	
+
 	private WebDriver driver;
 
 	@Before
 	public void setUp() {
-		PropertyReader reader=new PropertyReader("user.properties");
+		PropertyReader reader = new PropertyReader("user.properties");
 		String browser = reader.getProperty("browsertype");
 		System.out.println(browser);
 
-				driver = WebdriverManager.getInstance(browser).getDriver();
-				driver.get("https://staging.photonfin.com/#/");
+		driver = WebdriverManager.getInstance(browser).getDriver();
+		driver.get("https://staging.photonfin.com/#/");
 
 	}
-	
-	
-	
+
+
 	@After
 	public void tearDown() {
 		WebdriverManager.quitBrowser();
