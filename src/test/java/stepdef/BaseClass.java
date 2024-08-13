@@ -16,10 +16,15 @@ public class BaseClass {
 	public void setUp() {
 		PropertyReader reader = new PropertyReader("user.properties");
 		String browser = reader.getProperty("browsertype");
+		String base_url = reader.getProperty("url");
+
 		System.out.println(browser);
+		System.out.println(base_url);
 
 		driver = WebdriverManager.getInstance(browser).getDriver();
-		driver.get("https://staging.photonfin.com/#/");
+		driver.manage().window().maximize();
+		driver.get(base_url);
+
 
 	}
 

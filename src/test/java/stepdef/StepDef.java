@@ -18,7 +18,6 @@ public class StepDef {
 
 		PropertyReader reader = new PropertyReader("user.properties");
 		String browser = reader.getProperty("browsertype");
-		System.out.println(browser);
 
 		driver = WebdriverManager.getInstance(browser).getDriver();
 		hp = new HomePage(driver);
@@ -31,6 +30,16 @@ public class StepDef {
 
 	@Then("user should able to view the To begin, please answer some questions for me")
 	public void user_should_able_to_view_the_to_begin_please_answer_some_questions_for_me() {
+		hp.checktext();
+	}
 
+	@Then("user click on getstarted again")
+	public void userClickOnGetstartedAgain() {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
+		hp.clickOngetStarted2();
 	}
 }
