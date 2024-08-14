@@ -19,16 +19,6 @@ public class PropertyReader {
         }
     }
 
-    // Method to get the value of a property by its key
-    public String getProperty(String key) {
-        return properties.getProperty(key);
-    }
-
-    // Method to get the value of a property with a default value
-    public String getProperty(String key, String defaultValue) {
-        return properties.getProperty(key, defaultValue);
-    }
-
     public static void main(String[] args) {
         // Specify the path to your properties file
         PropertyReader reader = new PropertyReader("config.properties");
@@ -40,5 +30,15 @@ public class PropertyReader {
         // Output the properties
         System.out.println("DB User: " + dbUser);
         System.out.println("DB Password: " + dbPassword);
+    }
+
+    // Method to get the value of a property by its key
+    public String getProperty(String key) {
+        return properties.getProperty(key);
+    }
+
+    // Method to get the value of a property with a default value
+    public String getProperty(String key, String defaultValue) {
+        return properties.getProperty(key, defaultValue);
     }
 }

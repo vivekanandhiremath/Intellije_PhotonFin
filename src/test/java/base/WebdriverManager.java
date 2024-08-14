@@ -12,6 +12,28 @@ public class WebdriverManager {
     private WebdriverManager() {
     }
 
+    public static WebdriverManager getInstance(String browser) {
+        if (instance == null) {
+            synchronized (WebdriverManager.class) {
+                if (instance == null) {
+                    instance = new WebdriverManager();
+                }
+            }
+        }
+
+        if (tlDriver.get() == null) {
+            instance.initDriver(browser);
+        }
+        return instance;
+    }
+
+    public static void quitBrowser() {
+        if (tlDriver.get() != null) {
+            tlDriver.get().quit();
+            tlDriver.remove();
+        }
+    }
+
     public void initDriver(String browser) {
         switch (browser.toLowerCase()) {
             case "chrome":
@@ -29,31 +51,8 @@ public class WebdriverManager {
         }
     }
 
-    public static WebdriverManager getInstance(String browser) {
-        if (instance == null) {
-            synchronized (WebdriverManager.class) {
-                if (instance == null) {
-                    instance = new WebdriverManager();
-                }
-            }
-        }
-
-        if (tlDriver.get() == null) {
-            instance.initDriver(browser);
-        }
-        return instance;
-    }
-
-
     public WebDriver getDriver() {
         return tlDriver.get();
-    }
-
-    public static void quitBrowser() {
-        if (tlDriver.get() != null) {
-            tlDriver.get().quit();
-            tlDriver.remove();
-        }
     }
 }
 
